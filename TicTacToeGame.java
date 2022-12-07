@@ -3,15 +3,20 @@ public class TicTacToeGame {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
-        char[] boardArray = new char[10];
-        for (int i = 1; i < boardArray.length; i++){
-            boardArray[i] = ' ';
-        }
-
          char userCharacter = ' ';
          char computerCharacter = ' ';
 
-        userToss();
+         userCharacter = userCharSelection(userCharacter);
+         computerCharacter = computerCharSelection(userCharacter);
+
+        System.out.println("The Selected User Character is = " +userCharacter);
+        System.out.println("The Selected Computer Character is = " +computerCharacter);
+
+
+        char[] boardArray = {'a',' ', ' ', 'X', 'O', ' ', ' ', ' ', 'X', 'O'};  // Sample foe UC7
+        displayBoard(boardArray);
+        statusCheckIsWin(boardArray, userCharacter, computerCharacter);
+
     }
 
     public static char userCharSelection(char userCharacter){
@@ -85,5 +90,96 @@ public class TicTacToeGame {
         else {
             userToss();
         }
+    }
+
+    public static void statusCheckIsWin(char[] boardArray, char userCharacter, char computerCharacter){
+        char lineOfWin1[] = {boardArray[1], boardArray[2], boardArray[3]};
+        char lineOfWin2[] = {boardArray[4], boardArray[5], boardArray[6]};
+        char lineOfWin3[] = {boardArray[7], boardArray[8], boardArray[9]};
+        char lineOfWin4[] = {boardArray[1], boardArray[4], boardArray[7]};
+        char lineOfWin5[] = {boardArray[2], boardArray[5], boardArray[8]};
+        char lineOfWin6[] = {boardArray[3], boardArray[6], boardArray[9]};
+        char lineOfWin7[] = {boardArray[1], boardArray[5], boardArray[9]};
+        char lineOfWin8[] = {boardArray[3], boardArray[5], boardArray[7]};
+
+        char A = userCharacter;
+        char B = computerCharacter;
+
+
+        if (lineOfWin1[0] == A && lineOfWin1[1] == A && lineOfWin1[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin2[0] == A && lineOfWin2[1] == A && lineOfWin3[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin3[0] == A && lineOfWin3[1] == A && lineOfWin3[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin4[0] == A && lineOfWin4[1] == A && lineOfWin4[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin5[0] == A && lineOfWin5[1] == A && lineOfWin5[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin6[0] == A && lineOfWin6[1] == A && lineOfWin6[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin7[0] == A && lineOfWin7[1] == A && lineOfWin7[2] == A ){
+            System.out.println("User wins");
+        }
+        else if (lineOfWin8[0] == A && lineOfWin8[1] == A && lineOfWin8[2] == A ){
+            System.out.println("User wins");
+        }
+
+        else if (lineOfWin1[0] == B && lineOfWin1[1] == B && lineOfWin1[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin2[0] == B && lineOfWin2[1] == B && lineOfWin3[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin3[0] == B && lineOfWin3[1] == B && lineOfWin3[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin4[0] == B && lineOfWin4[1] == B && lineOfWin4[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin5[0] == B && lineOfWin5[1] == B && lineOfWin5[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin6[0] == B && lineOfWin6[1] == B && lineOfWin6[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin7[0] == B && lineOfWin7[1] == B && lineOfWin7[2] == B ){
+            System.out.println("Computer wins");
+        }
+        else if (lineOfWin8[0] == B && lineOfWin8[1] == B && lineOfWin8[2] == B ){
+            System.out.println("Computer wins");
+        }
+
+        else {
+            statusCheckIsDraw(boardArray, userCharacter, computerCharacter);
+            //System.out.println("It is a draw");
+        }
+
+    }
+
+    public static void statusCheckIsDraw(char[] boardArray, char userCharacter, char computerCharacter){
+        int filledCharacters = 0;
+        for (int i = 1; i < boardArray.length; i++){
+            if (boardArray[i] == 'X' || boardArray[i] == 'O'){
+                filledCharacters++;
+            }
+        }
+
+        if (filledCharacters == 9){
+            System.out.println("The game is a Draw");
+        }
+        else {
+            statusCheckToContinuePlay(boardArray, userCharacter, computerCharacter);
+        }
+    }
+
+    public static void statusCheckToContinuePlay(char[] boardArray, char userCharacter, char computerCharacter){
+        System.out.println("Continue Playing");
     }
 }
