@@ -53,9 +53,19 @@ public class TicTacToeGame {
     }
 
     public static char[] positionInput(char[] boardArray, char userCharacter){
-        System.out.println("Enter the position in which U want to enter your character");
+        System.out.println("Enter the position in which You want to enter your character");
         int userInputPosition = scanner.nextInt();
-        boardArray[userInputPosition] = userCharacter;
+        if (userInputPosition >= 1 && userInputPosition <= 9) {
+            if (boardArray[userInputPosition] == ' ') {
+                boardArray[userInputPosition] = userCharacter;
+            } else {
+                positionInput(boardArray, userCharacter);
+            }
+        }
+        else {
+            positionInput(boardArray, userCharacter);
+        }
         return boardArray;
     }
+
 }
