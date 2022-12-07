@@ -11,14 +11,7 @@ public class TicTacToeGame {
          char userCharacter = ' ';
          char computerCharacter = ' ';
 
-         userCharacter = userCharSelection(userCharacter);
-         computerCharacter = computerCharSelection(userCharacter);
-
-        System.out.println("The Selected User Character is = " +userCharacter);
-        System.out.println("The Selected Computer Character is = " +computerCharacter);
-
-        boardArray = positionInput(boardArray, userCharacter);
-        displayBoard(boardArray);
+        userToss();
     }
 
     public static char userCharSelection(char userCharacter){
@@ -68,4 +61,29 @@ public class TicTacToeGame {
         return boardArray;
     }
 
+    public static void userToss(){
+        System.out.println("Enter either H for Heads or T for Tails");
+        char userChoice = scanner.next().charAt(0);
+        if (userChoice == 'H' || userChoice == 'T') {
+
+            int random = (int) Math.floor(Math.random() * 2 + 1);
+            char tossResult;
+            if (random == 1) {
+                tossResult = 'H';
+            } else {
+                tossResult = 'T';
+            }
+
+            if (userChoice == tossResult) {
+                //return true;
+                System.out.println("User will start first");
+            } else {
+                //return false;
+                System.out.println("The Computer will start first");
+            }
+        }
+        else {
+            userToss();
+        }
+    }
 }
