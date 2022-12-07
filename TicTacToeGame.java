@@ -2,8 +2,22 @@ import java.util.Scanner;
 public class TicTacToeGame {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        char[] boardArray = {'a','O', 'X', 'X', 'X', 'X', 'O', 'O', 'O', 'X'};
 
+        char[] boardArray = new char[10];
+        for (int i = 1; i < boardArray.length; i++){
+            boardArray[i] = ' ';
+        }
+
+         char userCharacter = ' ';
+         char computerCharacter = ' ';
+
+         userCharacter = userCharSelection(userCharacter);
+         computerCharacter = computerCharSelection(userCharacter);
+
+        System.out.println("The Selected User Character is = " +userCharacter);
+        System.out.println("The Selected Computer Character is = " +computerCharacter);
+
+        boardArray = positionInput(boardArray, userCharacter);
         displayBoard(boardArray);
     }
 
@@ -36,5 +50,12 @@ public class TicTacToeGame {
             }
             System.out.println();
         }
+    }
+
+    public static char[] positionInput(char[] boardArray, char userCharacter){
+        System.out.println("Enter the position in which U want to enter your character");
+        int userInputPosition = scanner.nextInt();
+        boardArray[userInputPosition] = userCharacter;
+        return boardArray;
     }
 }
